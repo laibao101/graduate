@@ -30,7 +30,7 @@ router.get('/read', function (req, res, next) {
 
 
 //数据存储模块
-router.get('./write',function (req,res,next) {
+router.get('/write',function (req,res,next) {
 	//文件名
 	var type = req.param('type') || '';
 	//url
@@ -43,9 +43,52 @@ router.get('./write',function (req,res,next) {
 	if (!type || !url || !img || !title) {
 		return res.send({
 			status:0,
-			info:'文件写入失败'
+			info:'参数不完整'
 		})
 	}
+
+	// (1) 读取文件
+	var filePath = PATH + type + '.json';
+	fs.readFile(filePath,function (err,data) {
+		if (err) {
+            return res.send({
+                status: 0,
+                info: '文件读取异常'
+            });
+        }
+
+		var arr = JSON.parse(data.toString());
+
+		//一条数据
+		var obj = {
+			img:img,
+			title:title,
+			url:url,
+			id:guidGenerate(),
+			time:new Date()
+		}
+
+		arr.splice(0,0,obj);
+
+		var newData = JSON.stringify(arr);
+		// (2) 写入文件
+		fs.writeFile(filePath,newData,function (err) {
+			if (err) {
+				return res.send({
+					status:0,
+					info:'文件写入失败'
+				});
+			}
+
+			return res.send({
+				status:1,
+				info:obj
+			});
+
+		})
+	})
+
+
 })
 
 
