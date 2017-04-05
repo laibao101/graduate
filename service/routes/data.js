@@ -121,7 +121,7 @@ router.post('/write_config',function (req,res,next) {
 		if (err) {
 			return res.send({
 				status:0,
-				info:'文件写入失败'
+				info:'写入数据失败'
 			});
 		}
 		return res.send({
