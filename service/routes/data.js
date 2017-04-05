@@ -3,7 +3,7 @@ var router = express.Router();
 var fs = require('fs');
 var PATH = './public/data/';
 
-//读取数据模块
+//读取数据模块 客户端调用
 router.get('/read', function (req, res, next) {
     var type = req.param('type') || '';
     fs.readFile(PATH + type + '.json', function (err, data) {
@@ -29,8 +29,8 @@ router.get('/read', function (req, res, next) {
 });
 
 
-//数据存储模块
-router.get('/write',function (req,res,next) {
+//数据存储模块  后台调用
+router.post('/write',function (req,res,next) {
 	//文件名
 	var type = req.param('type') || '';
 	//url
@@ -105,7 +105,7 @@ function guidGenerate() {
 }
 
 
-//阅读模块写入接口
+//阅读模块写入接口 后台调用
 router.post('/write_config',function (req,res,next) {
 	//后期进行提交数据验证
 	//防止xss攻击
@@ -113,7 +113,7 @@ router.post('/write_config',function (req,res,next) {
 	//require('xss')
 	//var str = xss(name)
 	var data = req.body.data;
-
+	console.log(req);
 	var obj = JSON.parse(data);
 	var newData = JSON.stringify(obj);
 	//写入
