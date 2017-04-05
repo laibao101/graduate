@@ -104,4 +104,32 @@ function guidGenerate() {
     return guid;
 }
 
+
+//阅读模块写入接口
+router.post('/write_config',function (req,res,next) {
+	//后期进行提交数据验证
+	//防止xss攻击
+	// npm install xss
+	//require('xss')
+	//var str = xss(name)
+	var data = req.body.data;
+
+	var obj = JSON.parse(data);
+	var newData = JSON.stringify(obj);
+	//写入
+	fs.writeFile(PATH + 'config.json',newData,function (err) {
+		if (err) {
+			return res.send({
+				status:0,
+				info:'文件写入失败'
+			});
+		}
+		return res.send({
+			status:1,
+			info:obj
+		});
+
+	})
+})
+
 module.exports = router;
