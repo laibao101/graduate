@@ -113,7 +113,7 @@ router.post('/write_config',function (req,res,next) {
 	//require('xss')
 	//var str = xss(name)
 	var data = req.body.data;
-	console.log(req);
+
 	var obj = JSON.parse(data);
 	var newData = JSON.stringify(obj);
 	//写入
@@ -130,6 +130,33 @@ router.post('/write_config',function (req,res,next) {
 		});
 
 	})
+})
+
+//登录接口
+router.post('/login',function(req,res,next) {
+    //用户名，密码，验证码
+    var username = req.body.username;
+    var password = req.body.password;
+
+    //对用户名、密码进行校验
+    //xss处理，判断是否为空
+
+    //密码加密，md5加密 （md5(password + '随机字符串')
+    //密码需要加密 ， 可以写入json文件
+    if (username === 'admin' && password == '123456') {
+        req.session.user = {
+            username:username
+        };
+        return res.send({
+            status:1,
+            info:'登录成功'
+        });
+    }
+
+    return res.send({
+        status:0,
+        info:'登录失败'
+    })
 })
 
 module.exports = router;
