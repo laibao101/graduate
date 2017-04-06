@@ -1,6 +1,16 @@
 import React, {Component} from 'react';
 import {AppRegistry, StyleSheet, Text, View, TabBarIOS} from 'react-native';
 
+//卫生间组件
+import ToiletPage from './ios_views/ToiletPage';
+//阅读组件
+import Read from './ios_views/Read';
+//天气组件
+import Weather from './ios_views/Weather';
+//设置组件
+import Setting from './ios_views/Setting';
+
+
 export default class toilet extends Component {
     constractor(props){
         super(props);
@@ -23,7 +33,7 @@ export default class toilet extends Component {
                         });
                     }}
                 >
-                    {this._renderContent()}
+                    {this._renderView('ToiletPage')}
                 </TabBarIOS.Item>
                 <TabBarIOS.Item
                     title="阅读"
@@ -35,7 +45,7 @@ export default class toilet extends Component {
                         });
                     }}
                 >
-                    {this._renderContent()}
+                    {this._renderView('Read')}
                 </TabBarIOS.Item>
                 <TabBarIOS.Item
                     title="天气"
@@ -47,7 +57,7 @@ export default class toilet extends Component {
                         });
                     }}
                 >
-                    {this._renderContent()}
+                    {this._renderView('Weather')}
                 </TabBarIOS.Item>
                 <TabBarIOS.Item
                     title="设置"
@@ -59,17 +69,20 @@ export default class toilet extends Component {
                         });
                     }}
                 >
-                    {this._renderContent()}
+                    {this._renderView('Setting')}
                 </TabBarIOS.Item>
             </TabBarIOS>
         );
     }
 
-    _renderContent(){
-
+    _renderView(componentName){
+        return (
+            <View>
+                <componentName></componentName>
+            </View>
+        );
     }
 }
 
-const styles = StyleSheet.create({});
 
 AppRegistry.registerComponent('toilet', () => toilet);
