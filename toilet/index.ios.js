@@ -9,7 +9,8 @@ import Read from './ios_views/Read';
 import Weather from './ios_views/Weather';
 //设置组件
 import Setting from './ios_views/Setting';
-
+//图标
+import icons from './icons/icons';
 
 export default class toilet extends Component {
     constructor(props){
@@ -25,7 +26,7 @@ export default class toilet extends Component {
             <TabBarIOS>
                 <TabBarIOS.Item
                     title = "卫生间"
-                    // incon = {{uri:,scale:4.6}}
+                    icon = {{uri:icons.toilet,scale:4.6}}
                     selected = {this.state.selectedTab === 'toilet'}
                     onPress={()=>{
                         this.setState({
@@ -37,7 +38,7 @@ export default class toilet extends Component {
                 </TabBarIOS.Item>
                 <TabBarIOS.Item
                     title="阅读"
-                    // incon = {{uri:,scale:4.6}}
+                    icon = {{uri:icons.read,scale:4.6}}
                     selected = {this.state.selectedTab === 'read'}
                     onPress={()=>{
                         this.setState({
@@ -49,7 +50,7 @@ export default class toilet extends Component {
                 </TabBarIOS.Item>
                 <TabBarIOS.Item
                     title="天气"
-                    // incon = {{uri:,scale:4.6}}
+                    icon = {{uri:icons.weather,scale:4.6}}
                     selected = {this.state.selectedTab === 'weather'}
                     onPress={()=>{
                         this.setState({
@@ -61,7 +62,7 @@ export default class toilet extends Component {
                 </TabBarIOS.Item>
                 <TabBarIOS.Item
                     title="设置"
-                    // incon = {{uri:,scale:4.6}}
+                    icon = {{uri:icons.setting,scale:4.6}}
                     selected = {this.state.selectedTab === 'setting'}
                     onPress={()=>{
                         this.setState({
@@ -77,13 +78,7 @@ export default class toilet extends Component {
 
     _renderView(componentName){
         return (
-            // <ToiletPage></ToiletPage>
-            <WebView
-                style = {{marginTop:-20}}
-                source = {{uri:'http://www.jianshu.com/p/f963839fca1a'}}
-                startInLoadingState = {true}
-                javaScriptEnabled = {true}
-            ></WebView>
+            <ToiletPage></ToiletPage>
         );
     }
 }
