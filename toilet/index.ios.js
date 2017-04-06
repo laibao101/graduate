@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {AppRegistry, StyleSheet, Text, View, TabBarIOS} from 'react-native';
+import {AppRegistry, StyleSheet, Text, View, TabBarIOS,WebView} from 'react-native';
 
 //卫生间组件
 import ToiletPage from './ios_views/ToiletPage';
@@ -77,7 +77,13 @@ export default class toilet extends Component {
 
     _renderView(componentName){
         return (
-            <ToiletPage></ToiletPage>
+            // <ToiletPage></ToiletPage>
+            <WebView
+                style = {{marginTop:-20}}
+                source = {{uri:'http://www.jianshu.com/p/f963839fca1a'}}
+                startInLoadingState = {true}
+                javaScriptEnabled = {true}
+            ></WebView>
         );
     }
 }

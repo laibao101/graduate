@@ -13,7 +13,7 @@ class ToiletPage extends Component {
     render() {
         return (
             <View style={styles.container}>
-                <TWebView url="http://www.baidu.com/"></TWebView>
+                <TWebView url="http://www.taobao.com/"></TWebView>
             </View>
         );
     }

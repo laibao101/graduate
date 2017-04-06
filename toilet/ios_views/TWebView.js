@@ -16,15 +16,16 @@ class TWebView extends Component{
 			<View style={styles.container}>
 				{
 					this.state.isError ?
-					<View style={styles.errorInfo}>
-						<Text style={styles.text}>网络有问题，请检查网络设置并刷新</Text>
-					</View>
+						<View style={styles.errorInfo}>
+							<Text style={styles.text}>网络有问题，请检查网络设置并刷新</Text>
+						</View>
 					:
 					<WebView
 						onError = {this._showError.bind(this)}
 						style = {{marginTop:-20}}
 						source = {{uri:this.state.url}}
 						startInLoadingState = {true}
+						javaScriptEnabled = {true}
 					></WebView>
 				}
 
