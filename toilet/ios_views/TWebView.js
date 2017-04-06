@@ -16,7 +16,9 @@ class TWebView extends Component{
 			<View style={styles.container}>
 				{
 					this.state.isError ?
-					<Text style={styles.errorInfo}>网络有问题，请检查网络设置并刷新</Text>
+					<View style={styles.errorInfo}>
+						<Text style={styles.text}>网络有问题，请检查网络设置并刷新</Text>
+					</View>
 					:
 					<WebView
 						onError = {this._showError.bind(this)}
@@ -46,6 +48,10 @@ const styles = StyleSheet.create({
 		marginTop:100,
 		justifyContent:'center',
 		alignItems:'center'
+	},
+	text:{
+		fontSize:16,
+		fontWeight:'300'
 	}
 })
 
