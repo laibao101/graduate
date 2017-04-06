@@ -12,11 +12,11 @@ import Setting from './ios_views/Setting';
 
 
 export default class toilet extends Component {
-    constractor(props){
+    constructor(props){
         super(props);
 
         this.state = {
-            selectedTab = 'toilet'
+            selectedTab : 'toilet'
         }
     }
 
@@ -25,7 +25,7 @@ export default class toilet extends Component {
             <TabBarIOS>
                 <TabBarIOS.Item
                     title = "卫生间"
-                    incon = {{uri:,scale:4.6}}
+                    // incon = {{uri:,scale:4.6}}
                     selected = {this.state.selectedTab === 'toilet'}
                     onPress={()=>{
                         this.setState({
@@ -37,7 +37,7 @@ export default class toilet extends Component {
                 </TabBarIOS.Item>
                 <TabBarIOS.Item
                     title="阅读"
-                    incon = {{uri:,scale:4.6}}
+                    // incon = {{uri:,scale:4.6}}
                     selected = {this.state.selectedTab === 'read'}
                     onPress={()=>{
                         this.setState({
@@ -49,7 +49,7 @@ export default class toilet extends Component {
                 </TabBarIOS.Item>
                 <TabBarIOS.Item
                     title="天气"
-                    incon = {{uri:,scale:4.6}}
+                    // incon = {{uri:,scale:4.6}}
                     selected = {this.state.selectedTab === 'weather'}
                     onPress={()=>{
                         this.setState({
@@ -61,7 +61,7 @@ export default class toilet extends Component {
                 </TabBarIOS.Item>
                 <TabBarIOS.Item
                     title="设置"
-                    incon = {{uri:,scale:4.6}}
+                    // incon = {{uri:,scale:4.6}}
                     selected = {this.state.selectedTab === 'setting'}
                     onPress={()=>{
                         this.setState({
@@ -77,9 +77,7 @@ export default class toilet extends Component {
 
     _renderView(componentName){
         return (
-            <View>
-                <componentName></componentName>
-            </View>
+            <ToiletPage></ToiletPage>
         );
     }
 }

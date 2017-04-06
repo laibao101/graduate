@@ -2,17 +2,17 @@ import React, {Component} from 'react';
 import {AppRegistry, StyleSheet, Text, View, WebView} from 'react-native';
 
 
-import TWebView form './TWebView';
+import TWebView from './TWebView';
 
 class ToiletPage extends Component {
-    constractor(props) {
+    constructor(props) {
         super(props);
 
     }
 
     render() {
         return (
-            <View>
+            <View style={styles.container}>
                 <TWebView url="http://www.baidu.com/"></TWebView>
             </View>
         );
@@ -22,6 +22,9 @@ class ToiletPage extends Component {
 const styles = StyleSheet.create({
     text: {
         fontSize: 60
+    },
+    container:{
+        flex:1
     }
 });
 

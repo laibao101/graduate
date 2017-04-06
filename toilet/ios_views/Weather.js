@@ -3,7 +3,7 @@ import {AppRegistry, StyleSheet, Text, View} from 'react-native';
 
 
 class Weather extends Component{
-	constractor(props){
+	constructor(props){
 		super(props);
 
 	}
