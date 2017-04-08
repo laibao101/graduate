@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {AppRegistry, StyleSheet, Text, View, TextInput} from 'react-native';
 
-import util form '../util'let name;
+import util from '../util';
 
 class Search extends Component {
     constructor(props) {
@@ -14,7 +14,8 @@ class Search extends Component {
             <View style={styles.container}>
                 <TextInput
 					style={styles.search_input}
-					placeholderTextColor = "#EEEEEE"
+                    placeholder="搜索"
+					placeholderTextColor = "#666"
 				 />
             </View>
         );
@@ -23,12 +24,13 @@ class Search extends Component {
 
 const styles = StyleSheet.create({
     search_input:{
-		heihgt:50,
+		height:30,
 		// borderWidth:util.pixel,
 		borderWidth:1,
 		borderColor:'#EEEEEE',
 		fontSize:15,
-		borderRadius:3
+		borderRadius:3,
+        paddingLeft:10
 	},
 	container:{
 		paddingLeft:10,

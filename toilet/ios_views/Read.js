@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {AppRegistry, StyleSheet, Text, View, ScrollView} from 'react-native';
+import {AppRegistry, StyleSheet, Text, View, ScrollView, NavigatorIOS} from 'react-native';
 
 import Catgory from './read/Catgory';
 import List from './read/List';
@@ -19,7 +19,7 @@ class Hr extends Component{
 	}
 }
 
-class Read extends Component{
+class ReadView extends Component{
 	constructor(props){
 		super(props);
 		this.state = {
@@ -29,17 +29,20 @@ class Read extends Component{
 
 	render(){
 		return (
-			<View>
+			<View style={styles.container}>
 				<Search></Search>
 				<Hr></Hr>
 				{
 					this.state.isShow ?
-					<ScrollView>
-						<Topic></Topic>
-						<Recommend></Recommend>
-						<Catgory></Catgory>
-						<Recommend></Recommend>
-					</ScrollView>
+						<ScrollView style={styles.container}>
+							<Topic></Topic>
+							<Hr></Hr>
+							<Recommend></Recommend>
+							<Hr></Hr>
+							<Catgory></Catgory>
+							<Hr></Hr>
+							<Recommend></Recommend>
+						</ScrollView>
 					:
 					null
 				}
@@ -55,11 +58,31 @@ class Read extends Component{
 	}
 }
 
+
+class Read extends Component {
+  render() {
+    return (
+      <NavigatorIOS
+		  initialRoute={{
+			  component: ReadView,
+			  title: '阅读',
+			  navigationBarHidden:true
+		  }}
+        style={{flex: 1}}
+      />
+    );
+  }
+}
+
+
 const styles = StyleSheet.create({
 	hr:{
 		borderColor:'#F0F0F0',
 		borderWidth:util.pixel,
 		marginTop:10
+	},
+	container:{
+		flex:1
 	}
 });
 

@@ -17,7 +17,7 @@ export default class toilet extends Component {
         super(props);
 
         this.state = {
-            selectedTab : 'toilet'
+            selectedTab : 'read'
         }
     }
 
@@ -77,8 +77,25 @@ export default class toilet extends Component {
     }
 
     _renderView(componentName){
+        let view = null;
+        switch (componentName) {
+            case 'ToiletPage':
+                view = <ToiletPage></ToiletPage>;
+                break;
+            case 'Read':
+                view = <Read></Read>;
+                break;
+            case 'Weather':
+                view = <Weather></Weather>;
+                break;
+            case 'Setting':
+                view = <Setting></Setting>;
+            default:
+                view = <ToiletPage></ToiletPage>;
+                break;
+        }
         return (
-            <ToiletPage></ToiletPage>
+            view
         );
     }
 }

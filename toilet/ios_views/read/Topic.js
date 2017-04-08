@@ -12,7 +12,7 @@ class Topic extends Component{
 
 	render(){
 		return (
-			<View>
+			<View style={styles.container}>
                 <View>
                     <Text style={styles.text1}>
                         推荐专题
@@ -66,6 +66,10 @@ const styles = StyleSheet.create({
 		fontSize:15,
 		marginTop:6,
 		fontWeight:'300'
+	},
+	container:{
+		marginLeft:10,
+		marginRight:10
 	}
 });
 
