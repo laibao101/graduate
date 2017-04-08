@@ -7,37 +7,39 @@ class Catgory extends Component{
 	constructor(props){
 		super(props);
 
+		this.state = {
+			data:props.data
+		}
 	}
 
 	render(){
+		const data = this.state.data;
+		const views1 = [];
+		const views2 = [];
+		for (const i in data) {
+			const item = (
+				<View style={styles.row_item}>
+					<View style={styles.item}>
+						<Text style={styles.title} >{data[i].text}</Text>
+					</View>
+				</View>
+			);
+			if (i<2) {
+				views1.push(item);
+			} else {
+				views2.push(item);
+			}
+		}
 		return (
 			<View style={styles.container}>
 				<Text style={styles.text1}>
 					分类
 				</Text>
 				<View style={styles.row}>
-					<View style={styles.row_item}>
-						<View style={styles.item}>
-							<Text style={styles.title} >互联网</Text>
-						</View>
-					</View>
-					<View style={styles.row_item}>
-						<View style={styles.item}>
-							<Text style={styles.title}>散文</Text>
-						</View>
-					</View>
+					{views1}
 				</View>
 				<View style={styles.row}>
-					<View style={styles.row_item}>
-						<View style={styles.item}>
-							<Text style={styles.title}>互联网</Text>
-						</View>
-					</View>
-					<View style={styles.row_item}>
-						<View style={styles.item}>
-							<Text style={styles.title}>散文</Text>
-						</View>
-					</View>
+					{views2}
 				</View>
 			</View>
 		);

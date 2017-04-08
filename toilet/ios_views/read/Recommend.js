@@ -7,95 +7,47 @@ class Recommned extends Component {
     constructor(props) {
         super(props);
 
+        this.state = {
+            name:props.name,
+            data:props.data
+        }
     }
 
     render() {
+        const data = this.state.data;
+        const views1 = [];
+        const views2 = [];
+        for (const i in data) {
+            let item = (
+                <View style={styles.img_item} key={i}>
+                    <Image
+                        style={[styles.img,styles.shadow]}
+                        source={{uri:data[i].img}}
+                    ></Image>
+                    <Text
+                        style={styles.title}
+                        numberOfLines={2}
+                    >{data[i].title}</Text>
+                </View>
+            );
+            if (i < 4 ) {
+                views1.push(item);
+            }else{
+                views2.push(item);
+            }
+        }
         return (
             <View style={styles.container}>
                 <View>
                     <Text style={[styles.text1,styles.title_top]}>
-                        热门推荐
+                        {this.state.name}
                     </Text>
                 </View>
                 <View style={styles.img_view}>
-                    <View style={styles.img_item}>
-                        <Image
-                            style={[styles.img,styles.shadow]}
-                            source={{uri:'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1492223481&di=ebb1e41539de7a5766785957694531b4&imgtype=jpg&er=1&src=http%3A%2F%2Fimg.pconline.com.cn%2Fimages%2Fupload%2Fupc%2Ftx%2Fitbbs%2F1603%2F18%2Fc63%2F19365090_1458313871651_mthumb.jpg'}}
-                        ></Image>
-                        <Text
-                            style={styles.title}
-                            numberOfLines={2}
-                        >标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题</Text>
-                    </View>
-                    <View style={styles.img_item}>
-                        <Image
-                            style={[styles.img,styles.shadow]}
-                            source={{uri:'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1492223481&di=ebb1e41539de7a5766785957694531b4&imgtype=jpg&er=1&src=http%3A%2F%2Fimg.pconline.com.cn%2Fimages%2Fupload%2Fupc%2Ftx%2Fitbbs%2F1603%2F18%2Fc63%2F19365090_1458313871651_mthumb.jpg'}}
-                        ></Image>
-                        <Text
-                            style={styles.title}
-                            numberOfLines={2}
-                        >标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题</Text>
-                    </View><View style={styles.img_item}>
-                        <Image
-                            style={[styles.img,styles.shadow]}
-                            source={{uri:'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1492223481&di=ebb1e41539de7a5766785957694531b4&imgtype=jpg&er=1&src=http%3A%2F%2Fimg.pconline.com.cn%2Fimages%2Fupload%2Fupc%2Ftx%2Fitbbs%2F1603%2F18%2Fc63%2F19365090_1458313871651_mthumb.jpg'}}
-                        ></Image>
-                        <Text
-                            style={styles.title}
-                            numberOfLines={2}
-                        >标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题</Text>
-                    </View><View style={styles.img_item}>
-                        <Image
-                            style={[styles.img,styles.shadow]}
-                            source={{uri:'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1492223481&di=ebb1e41539de7a5766785957694531b4&imgtype=jpg&er=1&src=http%3A%2F%2Fimg.pconline.com.cn%2Fimages%2Fupload%2Fupc%2Ftx%2Fitbbs%2F1603%2F18%2Fc63%2F19365090_1458313871651_mthumb.jpg'}}
-                        ></Image>
-                        <Text
-                            style={styles.title}
-                            numberOfLines={2}
-                        >标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题</Text>
-                    </View>
+                    {views1}
                 </View>
                 <View style={styles.img_view}>
-                    <View style={styles.img_item}>
-                        <Image
-                            style={[styles.img,styles.shadow]}
-                            source={{uri:'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1492223481&di=ebb1e41539de7a5766785957694531b4&imgtype=jpg&er=1&src=http%3A%2F%2Fimg.pconline.com.cn%2Fimages%2Fupload%2Fupc%2Ftx%2Fitbbs%2F1603%2F18%2Fc63%2F19365090_1458313871651_mthumb.jpg'}}
-                        ></Image>
-                        <Text
-                            style={styles.title}
-                            numberOfLines={2}
-                        >标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题</Text>
-                    </View>
-                    <View style={styles.img_item}>
-                        <Image
-                            style={[styles.img,styles.shadow]}
-                            source={{uri:'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1492223481&di=ebb1e41539de7a5766785957694531b4&imgtype=jpg&er=1&src=http%3A%2F%2Fimg.pconline.com.cn%2Fimages%2Fupload%2Fupc%2Ftx%2Fitbbs%2F1603%2F18%2Fc63%2F19365090_1458313871651_mthumb.jpg'}}
-                        ></Image>
-                        <Text
-                            style={styles.title}
-                            numberOfLines={2}
-                        >标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题</Text>
-                    </View><View style={styles.img_item}>
-                        <Image
-                            style={[styles.img,styles.shadow]}
-                            source={{uri:'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1492223481&di=ebb1e41539de7a5766785957694531b4&imgtype=jpg&er=1&src=http%3A%2F%2Fimg.pconline.com.cn%2Fimages%2Fupload%2Fupc%2Ftx%2Fitbbs%2F1603%2F18%2Fc63%2F19365090_1458313871651_mthumb.jpg'}}
-                        ></Image>
-                        <Text
-                            style={styles.title}
-                            numberOfLines={2}
-                        >标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题</Text>
-                    </View><View style={styles.img_item}>
-                        <Image
-                            style={[styles.img,styles.shadow]}
-                            source={{uri:'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1492223481&di=ebb1e41539de7a5766785957694531b4&imgtype=jpg&er=1&src=http%3A%2F%2Fimg.pconline.com.cn%2Fimages%2Fupload%2Fupc%2Ftx%2Fitbbs%2F1603%2F18%2Fc63%2F19365090_1458313871651_mthumb.jpg'}}
-                        ></Image>
-                        <Text
-                            style={styles.title}
-                            numberOfLines={2}
-                        >标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题</Text>
-                    </View>
+                    {views2}
                 </View>
             </View>
         );

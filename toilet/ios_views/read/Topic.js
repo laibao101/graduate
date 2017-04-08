@@ -8,9 +8,26 @@ class Topic extends Component{
 	constructor(props){
 		super(props);
 
+		this.state = {
+			data:props.data
+		}
 	}
 
 	render(){
+		const views = [];
+		const data = this.state.data;
+		for (const i in data) {
+			views.push(
+				<View style={styles.img_item} key={i}>
+					<Image
+						source={{uri:data[i].img}}
+						style={styles.img}
+						resizeMode = 'cover'
+					></Image>
+				</View>
+			);
+		}
+
 		return (
 			<View style={styles.container}>
                 <View>
@@ -19,20 +36,7 @@ class Topic extends Component{
                     </Text>
                 </View>
 				<View style={styles.img_view}>
-					<View style={styles.img_item}>
-						<Image
-							source={{uri:'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1492223481&di=ebb1e41539de7a5766785957694531b4&imgtype=jpg&er=1&src=http%3A%2F%2Fimg.pconline.com.cn%2Fimages%2Fupload%2Fupc%2Ftx%2Fitbbs%2F1603%2F18%2Fc63%2F19365090_1458313871651_mthumb.jpg'}}
-							style={styles.img}
-							resizeMode = 'cover'
-						></Image>
-					</View>
-					<View style={styles.img_item}>
-						<Image
-							source={{uri:'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1491628773036&di=dd6b804192e0dbc8ee48168d5848b3ca&imgtype=0&src=http%3A%2F%2Fimg0.ph.126.net%2FndSuuiJWW9kzbECIcGeuWg%3D%3D%2F6632206859746225485.jpg'}}
-							style={styles.img}
-							resizeMode = 'cover'
-						></Image>
-					</View>
+					{views}
 				</View>
 				<View>
 					<Text style={styles.text2}>

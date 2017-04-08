@@ -34,14 +34,14 @@ class ReadView extends Component{
 				<Hr></Hr>
 				{
 					this.state.isShow ?
-						<ScrollView style={styles.container}>
-							<Topic></Topic>
+						<ScrollView style={[styles.container,{paddingTop:10}]}>
+							<Topic data={this.state.recommendTopic}></Topic>
 							<Hr></Hr>
-							<Recommend></Recommend>
+							<Recommend name="热门推荐" data={this.state.hotTopic}></Recommend>
 							<Hr></Hr>
-							<Catgory></Catgory>
+							<Catgory data={this.state.category}></Catgory>
 							<Hr></Hr>
-							<Recommend></Recommend>
+							<Recommend name="清新一刻" data={this.state.other}></Recommend>
 						</ScrollView>
 					:
 					null
@@ -52,9 +52,28 @@ class ReadView extends Component{
 	}
 
 	componentDidMount(){
-		this.setState({
-			isShow:true
-		});
+		let that = this;
+
+		util.get('http://123.57.39.116:3000/data/read?type=config',function(data) {
+			if (data.status == 1) {
+				const obj = data.data;
+				const hotTopic = obj.hotTopic;
+				const recommendTopic = obj.recommendTopic;
+				const category = obj.category;
+				const other = obj.other;
+				that.setState({
+					isShow:true,
+					recommendTopic,
+					category,
+					other,
+					hotTopic
+				});
+			}else{
+
+			}
+		},function(err) {
+			alert(err)
+		})
 	}
 }
 
