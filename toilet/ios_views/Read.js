@@ -42,6 +42,7 @@ class ReadView extends Component{
 							<Catgory data={this.state.category}></Catgory>
 							<Hr></Hr>
 							<Recommend name="清新一刻" data={this.state.other}></Recommend>
+							<View style={{height:70}}></View>
 						</ScrollView>
 					:
 					null
