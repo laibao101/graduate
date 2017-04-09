@@ -84,7 +84,7 @@ class SettingView extends Component {
     }
 
     _showAbout() {
-        AlertIOS.alert('如有问题,联系', 'wlhmyit@126.com', [
+        AlertIOS.alert('如有问题,联系', '369632567@qq.com', [
             {
                 text: '确认'
             }

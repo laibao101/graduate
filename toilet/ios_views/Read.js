@@ -72,7 +72,8 @@ class ReadView extends Component{
 	componentDidMount(){
 		let that = this;
 
-		util.get('http://123.57.39.116:3000/data/read?type=config',function(data) {
+// util.get('http://123.57.39.116:3000/data/read?type=config',function(data) {
+		util.get('http://localhost:3000/data/read?type=config',function(data) {
 			if (data.status == 1) {
 				const obj = data.data;
 				const hotTopic = obj.hotTopic;

@@ -78,4 +78,4 @@ const styles = StyleSheet.create({
   }
 });
 
-module.exports = Detail;
+export default Detail;

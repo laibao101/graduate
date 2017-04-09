@@ -79,4 +79,4 @@ const styles = StyleSheet.create({
   }
 });
 
-module.exports = Tips;
+export default Tips;

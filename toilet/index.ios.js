@@ -17,7 +17,7 @@ export default class toilet extends Component {
         super(props);
 
         this.state = {
-            selectedTab : 'setting'
+            selectedTab : 'toilet'
         }
     }
 
