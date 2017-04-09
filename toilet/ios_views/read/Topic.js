@@ -1,15 +1,16 @@
 import React, {Component} from 'react';
-import {AppRegistry, StyleSheet, Text, View, Image} from 'react-native';
+import {AppRegistry, StyleSheet, Text, View, Image, TouchableHighlight} from 'react-native';
 
 import util from '../util';
-
+import TWebView from '../TWebView';
 
 class Topic extends Component{
 	constructor(props){
 		super(props);
 
 		this.state = {
-			data:props.data
+			data:props.data,
+			navigator:props.navigator
 		}
 	}
 
@@ -18,13 +19,16 @@ class Topic extends Component{
 		const data = this.state.data;
 		for (const i in data) {
 			views.push(
-				<View style={styles.img_item} key={i}>
+				<TouchableHighlight style={styles.img_item}
+					key={i}
+					onPress={this._renderWebPage.bind(this,data[i])}
+				>
 					<Image
 						source={{uri:data[i].img}}
 						style={styles.img}
 						resizeMode = 'cover'
 					></Image>
-				</View>
+				</TouchableHighlight>
 			);
 		}
 
@@ -45,6 +49,16 @@ class Topic extends Component{
 				</View>
             </View>
 		);
+	}
+
+	_renderWebPage(data){
+		this.state.navigator.push({
+			title:data.title,
+			component:TWebView,
+			passProps:{
+				url:data.url
+			}
+		});
 	}
 }
 

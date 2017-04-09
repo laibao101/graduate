@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {AppRegistry, StyleSheet, Text, View, TabBarIOS,WebView} from 'react-native';
+import {AppRegistry, StyleSheet, Text, View, TabBarIOS,WebView, ActivityIndicator} from 'react-native';
 
 //卫生间组件
 import ToiletPage from './ios_views/ToiletPage';
@@ -17,7 +17,7 @@ export default class toilet extends Component {
         super(props);
 
         this.state = {
-            selectedTab : 'read'
+            selectedTab : 'setting'
         }
     }
 
@@ -90,6 +90,7 @@ export default class toilet extends Component {
                 break;
             case 'Setting':
                 view = <Setting></Setting>;
+                break;
             default:
                 view = <ToiletPage></ToiletPage>;
                 break;

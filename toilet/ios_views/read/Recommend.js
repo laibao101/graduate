@@ -1,7 +1,8 @@
 import React, {Component} from 'react';
-import {AppRegistry, StyleSheet, Text, View, Image} from 'react-native';
+import {AppRegistry, StyleSheet, Text, View, Image, TouchableOpacity} from 'react-native';
 
 import util from '../util';
+import TWebView from '../TWebView';
 
 class Recommned extends Component {
     constructor(props) {
@@ -9,7 +10,8 @@ class Recommned extends Component {
 
         this.state = {
             name:props.name,
-            data:props.data
+            data:props.data,
+            navigator:props.navigator
         }
     }
 
@@ -19,7 +21,11 @@ class Recommned extends Component {
         const views2 = [];
         for (const i in data) {
             let item = (
-                <View style={styles.img_item} key={i}>
+                <TouchableOpacity
+                    onPress={this._renderWebPage.bind(this,data[i])}
+                    style={styles.img_item}
+                    key={i}
+                >
                     <Image
                         style={[styles.img,styles.shadow]}
                         source={{uri:data[i].img}}
@@ -28,7 +34,7 @@ class Recommned extends Component {
                         style={styles.title}
                         numberOfLines={2}
                     >{data[i].title}</Text>
-                </View>
+                </TouchableOpacity>
             );
             if (i < 4 ) {
                 views1.push(item);
@@ -51,6 +57,16 @@ class Recommned extends Component {
                 </View>
             </View>
         );
+    }
+
+    _renderWebPage(data){
+        this.state.navigator.push({
+            component:TWebView,
+            title:data.title,
+            passProps:{
+                url:data.url
+            }
+        });
     }
 }
 

@@ -1,8 +1,7 @@
 import React, {Component} from 'react';
-import {AppRegistry, StyleSheet, Text, View, ScrollView, NavigatorIOS} from 'react-native';
+import {AppRegistry, StyleSheet, Text, View, ScrollView, NavigatorIOS, ActivityIndicator} from 'react-native';
 
 import Catgory from './read/Catgory';
-import List from './read/List';
 import Recommend from './read/Recommend';
 import Search from './read/Search';
 import Topic from './read/Topic';
@@ -23,7 +22,8 @@ class ReadView extends Component{
 	constructor(props){
 		super(props);
 		this.state = {
-			isShow:false
+			isShow:false,
+			navigator:props.navigator
 		}
 	}
 
@@ -35,17 +35,34 @@ class ReadView extends Component{
 				{
 					this.state.isShow ?
 						<ScrollView style={[styles.container,{paddingTop:10}]}>
-							<Topic data={this.state.recommendTopic}></Topic>
+							<Topic
+								data={this.state.recommendTopic}
+								navigator={this.state.navigator}
+							></Topic>
 							<Hr></Hr>
-							<Recommend name="热门推荐" data={this.state.hotTopic}></Recommend>
+							<Recommend
+								name="热门推荐"
+								data={this.state.hotTopic}
+								navigator={this.state.navigator}
+							></Recommend>
 							<Hr></Hr>
-							<Catgory data={this.state.category}></Catgory>
+							<Catgory
+								data={this.state.category}
+								navigator={this.state.navigator}
+							></Catgory>
 							<Hr></Hr>
-							<Recommend name="清新一刻" data={this.state.other}></Recommend>
+							<Recommend
+								name="清新一刻"
+								data={this.state.other}
+								navigator={this.state.navigator}
+							></Recommend>
 							<View style={{height:70}}></View>
 						</ScrollView>
 					:
-					null
+					<ActivityIndicator
+						size= 'large'
+						animating={true}
+					></ActivityIndicator>
 				}
 
 			</View>

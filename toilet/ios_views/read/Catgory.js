@@ -1,7 +1,8 @@
 import React, {Component} from 'react';
-import {AppRegistry, StyleSheet, Text, View} from 'react-native';
+import {AppRegistry, StyleSheet, Text, View, TouchableOpacity} from 'react-native';
 
 import util from '../util';
+import List from './List';
 
 class Catgory extends Component{
 	constructor(props){
@@ -18,11 +19,15 @@ class Catgory extends Component{
 		const views2 = [];
 		for (const i in data) {
 			const item = (
-				<View style={styles.row_item}>
+				<TouchableOpacity
+					style={styles.row_item}
+					key={i}
+					onPress={this._renderList.bind(this,data[i].text)}
+				>
 					<View style={styles.item}>
 						<Text style={styles.title} >{data[i].text}</Text>
 					</View>
-				</View>
+				</TouchableOpacity>
 			);
 			if (i<2) {
 				views1.push(item);
@@ -44,6 +49,36 @@ class Catgory extends Component{
 			</View>
 		);
 	}
+
+	_renderList(title){
+		let url = 'http://123.57.39.116:3000/data/read?type=';
+
+		switch (title) {
+			case '前端':
+				url += 'it';
+				break;
+			case 'ios':
+				url += 'cookies';
+				break;
+			case '安卓':
+				url += 'manager';
+				break;
+			case '运维':
+				url += 'sanwen';
+				break;
+			default:
+				url += 'it';
+		}
+
+		this.props.navigator.push({
+			component:List,
+			title:title,
+			passProps:{
+				url:url
+			}
+		});
+
+    }
 }
 
 const styles = StyleSheet.create({

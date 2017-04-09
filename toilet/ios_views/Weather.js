@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 import {AppRegistry, StyleSheet, Text, View} from 'react-native';
 
+import TWebView from './TWebView';
+
 
 class Weather extends Component{
 	constructor(props){
@@ -10,10 +12,8 @@ class Weather extends Component{
 
 	render(){
 		return (
-			<View>
-				<Text style={styles.text}>
-					天气
-				</Text>
+			<View style={{flex:1}}>
+				<TWebView url="http://123.57.39.116:3000/html/weather.html"></TWebView>
 			</View>
 		);
 	}
